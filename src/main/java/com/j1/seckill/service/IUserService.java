@@ -10,13 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author j1
  * @since 2022-02-14
  */
 public interface IUserService extends IService<User> {
-//  登录
+    //  登录
     RespBean doLogin(LoginVo loginVo, HttpServletRequest request, HttpServletResponse response);
+
+
+    //    根据cookie获取用户
+    User getUserByCookie(String userTicket, HttpServletRequest request, HttpServletResponse response);
+
 }
