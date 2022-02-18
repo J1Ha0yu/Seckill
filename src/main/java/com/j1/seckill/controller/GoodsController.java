@@ -1,5 +1,6 @@
 package com.j1.seckill.controller;
 
+import com.j1.seckill.config.UserArgumentResolver;
 import com.j1.seckill.pojo.User;
 import com.j1.seckill.service.IUserService;
 import com.j1.seckill.service.impl.UserServiceImpl;
@@ -32,17 +33,23 @@ public class GoodsController {
     //    跳转商品列表
     @RequestMapping("/toList")
 //    public String toList(HttpSession session, Model model, @CookieValue("userTicket") String ticket) {
-    public String toList(HttpServletRequest request, HttpServletResponse response, Model model, @CookieValue("userTicket") String ticket) {
-        if (!StringUtils.hasText(ticket)) return "login";
+//    public String toList(HttpServletRequest request, HttpServletResponse response, Model model, @CookieValue("userTicket") String ticket) {
+    public String toList(User user, Model model) {
 
-//        方法（1）：通过session获取用户信息
-//        User user = (User) session.getAttribute(ticket);
+        /*  通过addArgumentResolvers实现
+         if (!StringUtils.hasText(ticket)) return "login";
 
-//        方法（2）：通过redis获取
-        User user = userService.getUserByCookie(ticket, request, response);
+         //        方法（1）：通过session获取用户信息
+         //        User user = (User) session.getAttribute(ticket);
+
+         //        方法（2）：通过redis获取
+         User user = userService.getUserByCookie(ticket, request, response);
 
 
-        if (user == null) return "login";
+         if (user == null) return "login";
+         */
+
+
         //将user传到前端去
         model.addAttribute("user", user);
 
