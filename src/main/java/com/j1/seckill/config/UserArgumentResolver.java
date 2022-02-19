@@ -5,6 +5,8 @@ import com.j1.seckill.service.IUserService;
 import com.j1.seckill.utils.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -20,6 +22,9 @@ import javax.servlet.http.HttpServletResponse;
  * @Author J1
  * @Date DATE{TIME}
  */
+
+//@Service
+@Component
 public class UserArgumentResolver implements HandlerMethodArgumentResolver {
     @Autowired
     private IUserService userService;

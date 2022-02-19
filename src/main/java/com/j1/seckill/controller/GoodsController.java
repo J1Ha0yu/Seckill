@@ -2,6 +2,7 @@ package com.j1.seckill.controller;
 
 import com.j1.seckill.config.UserArgumentResolver;
 import com.j1.seckill.pojo.User;
+import com.j1.seckill.service.IGoodsService;
 import com.j1.seckill.service.IUserService;
 import com.j1.seckill.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +31,15 @@ public class GoodsController {
     @Autowired
     private IUserService userService;
 
+    @Autowired
+    private IGoodsService goodsService;
+
+
     //    跳转商品列表
     @RequestMapping("/toList")
 //    public String toList(HttpSession session, Model model, @CookieValue("userTicket") String ticket) {
 //    public String toList(HttpServletRequest request, HttpServletResponse response, Model model, @CookieValue("userTicket") String ticket) {
     public String toList(User user, Model model) {
-
         /*  通过addArgumentResolvers实现
          if (!StringUtils.hasText(ticket)) return "login";
 
@@ -49,9 +53,9 @@ public class GoodsController {
          if (user == null) return "login";
          */
 
-
         //将user传到前端去
         model.addAttribute("user", user);
+        model.addAttribute("goodsList",goodsService.findGoodsVo());
 
         return "goodsList";
     }
