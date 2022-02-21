@@ -70,7 +70,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 //        request.getSession().setAttribute(ticket, user);//session中存储的是用户User,ticket（即cookie）是属性，user是值
 
 //       方法（2）redis方法：将用户信心存入redis中
-        redisTemplate.opsForValue().set(user, ticket);
+        redisTemplate.opsForValue().set("user:" + ticket, user);
 
 //        放入cookie中
         CookieUtil.setCookie(request, response, "userTicket", ticket);
