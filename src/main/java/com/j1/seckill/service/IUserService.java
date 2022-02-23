@@ -24,4 +24,7 @@ public interface IUserService extends IService<User> {
     //    根据cookie获取用户
     User getUserByCookie(String userTicket, HttpServletRequest request, HttpServletResponse response);
 
+
+    //    更新用户信息
+    RespBean updatePassword(String userTicket, String password, HttpServletRequest request, HttpServletResponse response);
 }
